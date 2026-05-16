@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maisonia — Find Your Next Home</title>
+<meta name="description" content="Maisonia is a premium real estate platform to discover and rent beautiful homes across top cities.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">Maison<span>ia</span></a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn btn-primary">Login</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <h1>Your Next Home <em>Starts Here</em></h1>
+    <p>Discover handpicked rental homes in the world's most desirable neighborhoods. Curated by Maisonia.</p>
+    <form class="search-bar" onsubmit="event.preventDefault();location.href='properties.html?q='+encodeURIComponent(this.q.value)+'&city='+encodeURIComponent(this.city.value)+'&type='+encodeURIComponent(this.type.value)">
+      <input name="q" placeholder="Search by title, address…">
+      <select name="city"><option value="">Any city</option><option>New York</option><option>Paris</option><option>London</option><option>Dubai</option><option>Tokyo</option></select>
+      <select name="type"><option value="">Any type</option><option>Apartment</option><option>Villa</option><option>House</option><option>Studio</option></select>
+      <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+    </form>
+  </div>
+  <a href="#featured" class="hero-scroll"><i class="fa-solid fa-chevron-down fa-2x"></i></a>
+</section>
+
+<section class="section" id="featured">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Featured</div>
+      <h2>Handpicked Properties</h2>
+      <p>Discover our most beloved rental homes, curated for comfort, style, and location.</p>
+    </div>
+    <div class="grid" id="featured-grid">
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    </div>
+    <div style="text-align:center;margin-top:40px"><a href="properties.html" class="btn btn-dark">Explore All Properties <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--gray)">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Explore</div>
+      <h2>Properties on the Map</h2>
+      <p>Discover where your next home could be.</p>
+    </div>
+    <div id="map"></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <div><div class="stat-num" data-counter="2480">0</div><div class="stat-label">Houses</div></div>
+    <div><div class="stat-num" data-counter="48">0</div><div class="stat-label">Cities</div></div>
+    <div><div class="stat-num" data-counter="15200">0</div><div class="stat-label">Clients</div></div>
+    <div><div class="stat-num" data-counter="9650">0</div><div class="stat-label">Reviews</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Testimonials</div>
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal"><p>Maisonia made finding our family home effortless. The selection is unmatched and the experience felt premium from start to finish.</p><div class="testimonial-user"><div class="avatar">SM</div><div><strong>Sofia Marchetti</strong><small>New York</small></div></div></div>
+      <div class="testimonial reveal"><p>Stunning properties, beautiful interface, and incredibly responsive agents. I'd recommend Maisonia to anyone serious about renting.</p><div class="testimonial-user"><div class="avatar">JK</div><div><strong>James Kowalski</strong><small>London</small></div></div></div>
+      <div class="testimonial reveal"><p>The interactive map and gallery sliders make browsing a joy. Found the perfect apartment in Paris within days.</p><div class="testimonial-user"><div class="avatar">AL</div><div><strong>Amélie Laurent</strong><small>Paris</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="logo" style="color:#fff">Maison<span style="color:var(--gold)">ia</span></div>
+      <p style="margin-top:14px;color:#94a3b8;max-width:340px">Premium rental homes, curated worldwide. Where modern living meets timeless comfort.</p>
+      <div class="social">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="favorites.html">Favorites</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Blog</a></li></ul></div>
+    <div><h4>Support</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li><li><a href="login.html">Admin</a></li></ul></div>
+  </div>
+  <div class="container copyright">© 2026 Maisonia. All rights reserved.</div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

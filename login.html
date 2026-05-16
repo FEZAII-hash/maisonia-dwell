@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Login — Maisonia</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<main class="auth-wrap">
+  <div class="auth-card scale-in">
+    <div style="text-align:center;margin-bottom:18px"><a href="index.html" class="logo" style="color:var(--navy);font-size:2rem">Maison<span style="color:var(--gold)">ia</span></a></div>
+    <h2>Admin Sign In</h2>
+    <p class="sub">Access the Maisonia management dashboard</p>
+    <div class="error-msg" id="err"></div>
+    <form id="login-form">
+      <input type="email" name="email" placeholder="Email address" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button class="btn btn-primary btn-block" type="submit" id="login-btn">Sign In <i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+    <p style="text-align:center;margin-top:18px;color:var(--muted);font-size:.88rem"><a href="index.html" style="color:var(--turquoise)">← Back to site</a></p>
+  </div>
+</main>
+
+<script type="module">
+import { loginAdmin, watchAuth } from './js/auth.js';
+const err=document.getElementById('err');
+const btn=document.getElementById('login-btn');
+watchAuth(u=>{ if(u) location.href='admin/admin-dashboard.html'; });
+document.getElementById('login-form').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  err.classList.remove('show');
+  btn.disabled=true; btn.innerHTML='Signing in…';
+  const fd=new FormData(e.target);
+  try {
+    await loginAdmin(fd.get('email'), fd.get('password'));
+    location.href='admin/admin-dashboard.html';
+  } catch(ex) {
+    err.textContent = ex.message.replace('Firebase: ','');
+    err.classList.add('show');
+    btn.disabled=false; btn.innerHTML='Sign In <i class="fa-solid fa-arrow-right"></i>';
+  }
+});
+</script>
+</body>
+</html>
